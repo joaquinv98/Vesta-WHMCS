@@ -13,17 +13,6 @@ function vesta_ConfigOptions() {
 
 }
 
-function pterodactyl_GenerateUsername($length = 8) {
-    $returnable = false;
-    while (!$returnable) {
-        $generated = random($length);
-        if (preg_match('/[A-Z]+[a-z]+[0-9]+/', $generated)) {
-            $returnable = true;
-        }
-    }
-    return $generated;
-}
-
 function vesta_CreateAccount($params) {
 
     // Execute only if there is assigned server
