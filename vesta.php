@@ -113,7 +113,7 @@ function vesta_TerminateAccount($params) {
           'password' => $params["serverpassword"],
           'hash' => $params["serveraccesshash"],
           'cmd' => 'v-delete-user',
-          'arg1' => $params["username"]
+          'arg1' => $params['clientsdetails']['id'],
         );
         $postdata = http_build_query($postvars);
 
@@ -150,7 +150,7 @@ function vesta_SuspendAccount($params) {
           'password' => $params["serverpassword"],
           'hash' => $params["serveraccesshash"],
           'cmd' => 'v-suspend-user',
-          'arg1' => $params["username"]
+          'arg1' => $params['clientsdetails']['id'],
         );
         $postdata = http_build_query($postvars);
 
@@ -187,7 +187,7 @@ function vesta_UnsuspendAccount($params) {
           'password' => $params["serverpassword"],
           'hash' => $params["serveraccesshash"],
           'cmd' => 'v-unsuspend-user',
-          'arg1' => $params["username"]
+          'arg1' => $params['clientsdetails']['id'],
         );
         $postdata = http_build_query($postvars);
 
@@ -292,7 +292,7 @@ function vesta_ChangePackage($params) {
 function vesta_ClientArea($params) {
 
     $code = '<form action="https://'.$params["serverhostname"].':8083/login/" method="post" target="_blank">
-<input type="hidden" name="user" value="'.$params["username"].'" />
+<input type="hidden" name="user" value="'.$params['clientsdetails']['id'].'" />
 <input type="hidden" name="password" value="'.$params["password"].'" />
 <input type="submit" value="Login to Control Panel" />
 <input type="button" value="Login to Webmail" onClick="window.open(\'http://'.$serverhostname.'/webmail\')" />
